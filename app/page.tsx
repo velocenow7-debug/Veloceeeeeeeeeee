@@ -50,16 +50,19 @@ export default function Home() {
     <>
       <OpeningScreen />
       <div className="relative min-h-screen font-sans selection:bg-[#007FFF]/30 overflow-x-hidden page-fade-in">
-      {/* Custom Background Image Layer */}
-      <div 
-        className="fixed inset-0 -z-20 transition-all duration-500" 
-        style={{ 
-          backgroundImage: `url(${bgImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+      {/* Custom Background Video Layer */}
+      <video
+        className="fixed inset-0 object-cover -z-20 transition-all duration-500"
+        autoPlay
+        muted
+        loop
+        playsInline
+        style={{
           filter: `brightness(${brightness}%) contrast(${contrast}%)`
-        }} 
-      />
+        }}
+      >
+        <source src="/video.mp4" type="video/mp4" />
+      </video>
 
       {/* Settings Toggle Button */}
       <button 
