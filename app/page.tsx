@@ -9,7 +9,7 @@ export default function Home() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   // Background Customization State
-  const [bgImage, setBgImage] = useState('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop');
+  const [bgImage, setBgImage] = useState('https://images.unsplash.com/photo-1526779259212-939e64788e3c?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZnJlZSUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000');
   const [brightness, setBrightness] = useState(85); // Increased from 60 to 85
   const [contrast, setContrast] = useState(100);
 
@@ -122,9 +122,9 @@ export default function Home() {
             />
           </div>
 
-          <button 
+          <button
             onClick={() => {
-              setBgImage('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop');
+              setBgImage('https://images.unsplash.com/photo-1526779259212-939e64788e3c?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZnJlZSUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000');
               setBrightness(60);
               setContrast(100);
             }}
