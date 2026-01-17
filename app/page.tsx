@@ -50,19 +50,6 @@ export default function Home() {
     <>
       <OpeningScreen />
       <div className="relative min-h-screen font-sans selection:bg-[#007FFF]/30 overflow-x-hidden page-fade-in">
-      {/* Custom Background Video Layer */}
-      <video
-        className="fixed inset-0 object-fill -z-20 transition-all duration-500"
-        autoPlay
-        muted
-        loop
-        playsInline
-        style={{
-          filter: `brightness(${brightness}%) contrast(${contrast}%)`
-        }}
-      >
-        <source src="/video.mp4" type="video/mp4" />
-      </video>
 
       {/* Settings Toggle Button */}
       <button 
@@ -216,7 +203,7 @@ export default function Home() {
               Next-Gen Web Agency
             </div>
             <h1 id="hero-heading" className="text-6xl md:text-9xl font-black mb-8 tracking-tighter leading-[0.9] bg-clip-text text-transparent bg-gradient-to-b from-white via-[#007FFF] to-[#FFF0F5]/40">
-  
+              VELOCE
             </h1>
             <p className="text-xl md:text-3xl text-white/70 mb-12 max-w-3xl mx-auto font-light leading-relaxed">
               We engineer <span className="text-[#007FFF] font-semibold italic">high-velocity</span> digital experiences that redefine the boundaries of the modern web.
