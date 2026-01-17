@@ -1,13 +1,13 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import OpeningScreen from './OpeningScreen';
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  
+
   // Background Customization State
   const [bgImage, setBgImage] = useState('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop');
   const [brightness, setBrightness] = useState(85); // Increased from 60 to 85
@@ -15,12 +15,14 @@ export default function Home() {
 
   const scrollRef = useRef<HTMLDivElement>(null);
 
+
+
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePos({ x: e.clientX, y: e.clientY });
     };
     window.addEventListener('mousemove', handleMouseMove);
-    
+
     const observerOptions = {
       threshold: 0.1,
       rootMargin: '0px 0px -50px 0px'
@@ -43,18 +45,11 @@ export default function Home() {
     };
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setFormStatus('submitting');
-    // Simulate API call
-    setTimeout(() => {
-      setFormStatus('success');
-      setTimeout(() => setFormStatus('idle'), 5000);
-    }, 1500);
-  };
 
   return (
-    <div className="relative min-h-screen font-sans selection:bg-[#007FFF]/30 overflow-x-hidden">
+    <>
+      <OpeningScreen />
+      <div className="relative min-h-screen font-sans selection:bg-[#007FFF]/30 overflow-x-hidden page-fade-in">
       {/* Custom Background Image Layer */}
       <div 
         className="fixed inset-0 -z-20 transition-all duration-500" 
@@ -162,7 +157,7 @@ export default function Home() {
           </button>
           <nav className="flex flex-col gap-6 text-2xl font-bold">
             {['Home', 'Services', 'Portfolio', 'About', 'Contact'].map((item) => (
-              <a key={item} href={`#${item.toLowerCase()}`} className="hover:text-[#007FFF] transition-colors focus:outline-none focus:ring-2 focus:ring-[#007FFF] rounded-lg" onClick={() => setIsMenuOpen(false)}>{item}</a>
+              <a key={item} href={item === 'Contact' ? '/contact' : `#${item.toLowerCase()}`} className="hover:text-[#007FFF] transition-colors focus:outline-none focus:ring-2 focus:ring-[#007FFF] rounded-lg" onClick={() => setIsMenuOpen(false)}>{item}</a>
             ))}
           </nav>
         </div>
@@ -213,13 +208,13 @@ export default function Home() {
           {/* Desktop Menu */}
           <div className="hidden md:flex gap-8 text-sm font-medium text-white/70">
             {['Home', 'Services', 'Portfolio', 'About', 'Contact'].map((item) => (
-              <a key={item} href={`#${item.toLowerCase()}`} className="hover:text-white transition-colors focus:text-white focus:outline-none">{item}</a>
+              <a key={item} href={item === 'Contact' ? '/contact' : `#${item.toLowerCase()}`} className="hover:text-white transition-colors focus:text-white focus:outline-none">{item}</a>
             ))}
           </div>
 
-          <button className="hidden md:block px-5 py-2 rounded-xl glass-dark text-sm font-bold hover:bg-white/10 transition-all border border-white/10 focus:ring-2 focus:ring-[#007FFF] outline-none">
+          <a href="/contact" className="hidden md:block px-5 py-2 rounded-xl glass-dark text-sm font-bold hover:bg-white/10 transition-all border border-white/10 focus:ring-2 focus:ring-[#007FFF] outline-none">
             Start Project
-          </button>
+          </a>
 
           {/* Mobile Toggle */}
           <button 
@@ -236,35 +231,39 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="relative min-h-screen flex items-center justify-center pt-20 px-6 reveal" aria-labelledby="hero-heading">
+      <section id="home" className="relative min-h-screen flex items-center justify-center pt-20 px-6 reveal opening-animation" aria-labelledby="hero-heading">
         <div className="max-w-5xl w-full glass p-12 md:p-24 rounded-[3rem] text-center relative overflow-hidden border-white/10 shadow-[0_0_100px_rgba(0,127,255,0.1)]">
           {/* Decorative Background Elements for Hero */}
           <div className="absolute top-10 left-10 w-20 h-20 border border-white/10 rounded-full opacity-20 animate-pulse" />
           <div className="absolute bottom-20 right-20 w-40 h-40 border border-white/10 rounded-full opacity-10 animate-ping" style={{ animationDuration: '4s' }} />
           
           {/* Removed Inner Glow Effects with blur-[80px] */}
-          
-          <div className="relative z-10">
+          <img
+            src="/logo2.svg"
+            alt="Veloce Logo"
+            className="mx-auto mb-10 w-64 h-64 md:w-96 md:h-96 object-contain drop-shadow-[0_0_30px_rgba(0,127,255,0.6)] animate-pulse"
+          />
+
+
             <div className="inline-block px-4 py-1.5 mb-8 rounded-full glass-dark border border-[#007FFF]/30 text-xs font-bold tracking-[0.2em] uppercase text-[#007FFF] animate-pulse">
               Next-Gen Web Agency
             </div>
             <h1 id="hero-heading" className="text-6xl md:text-9xl font-black mb-8 tracking-tighter leading-[0.9] bg-clip-text text-transparent bg-gradient-to-b from-white via-[#007FFF] to-[#FFF0F5]/40">
-              VELOCE
+  
             </h1>
             <p className="text-xl md:text-3xl text-white/70 mb-12 max-w-3xl mx-auto font-light leading-relaxed">
               We engineer <span className="text-[#007FFF] font-semibold italic">high-velocity</span> digital experiences that redefine the boundaries of the modern web.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <button className="group relative px-10 py-5 rounded-2xl bg-white text-black font-black text-xl transition-all hover:scale-105 hover:shadow-[0_0_50px_rgba(255,255,255,0.4)] overflow-hidden">
+              <a href="/contact" className="group relative px-10 py-5 rounded-2xl bg-white text-black font-black text-xl transition-all hover:scale-105 hover:shadow-[0_0_50px_rgba(255,255,255,0.4)] overflow-hidden inline-block">
                 <span className="relative z-10">Start Your Project</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-500 opacity-0 group-hover:opacity-20 transition-opacity" />
-              </button>
-              <button className="px-10 py-5 rounded-2xl glass-dark font-bold text-xl hover:bg-white/10 transition-all border border-white/20 backdrop-blur-xl">
+              </a>
+              <a href="#portfolio" className="px-10 py-5 rounded-2xl glass-dark font-bold text-xl hover:bg-white/10 transition-all border border-white/20 backdrop-blur-xl inline-block">
                 Explore Work
-              </button>
+              </a>
             </div>
           </div>
-        </div>
       </section>
 
       {/* Services Section */}
@@ -302,14 +301,18 @@ export default function Home() {
             <button className="hidden md:block text-[#007FFF] font-medium hover:text-white transition-colors">View All Projects →</button>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3, 4, 5, 6].map((item, i) => (
-              <div key={item} className="group relative aspect-[4/3] rounded-3xl overflow-hidden glass chromatic-shine reveal" style={{ transitionDelay: `${i * 100}ms` }}>
+            {[
+              { name: "Phizooe Rehab Therapy", url: "https://contactphizeeosrehabtherapy-source.github.io/Phizooe/" },
+              { name: "Genz Cricket Club", url: "https://genzcricketclub-max.github.io/genzzz/" },
+              { name: "Sip & Social", url: "https://sipnsocial08.github.io/Sip-Social/" }
+            ].map((project, i) => (
+              <div key={i} className="group relative aspect-[4/3] rounded-3xl overflow-hidden glass chromatic-shine reveal" style={{ transitionDelay: `${i * 100}ms` }}>
+                <iframe src={project.url} className="w-full h-full border-none" title={project.name} />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1a1025]/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10 flex flex-col justify-end p-8">
-                  <h4 className="text-xl font-bold text-white">Project Name {item}</h4>
+                  <h4 className="text-xl font-bold text-white">{project.name}</h4>
                   <p className="text-sm text-[#DECFEE]/70 mb-4">Web Application • 2024</p>
-                  <button className="w-fit px-4 py-2 rounded-lg glass text-xs font-bold border-[#987FFE]/30 hover:bg-[#987FFE]/20">View Case Study</button>
+                  <a href={project.url} target="_blank" rel="noopener noreferrer" className="w-fit px-4 py-2 rounded-lg glass text-xs font-bold border-[#987FFE]/30 hover:bg-[#987FFE]/20 inline-block">View Live Site</a>
                 </div>
-                <div className="absolute inset-0 bg-[#987FFE]/10 animate-pulse" />
               </div>
             ))}
           </div>
@@ -352,72 +355,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-32 px-6" aria-labelledby="contact-heading">
-        <div className="max-w-3xl mx-auto glass p-12 rounded-[3rem] relative overflow-hidden reveal">
-          {formStatus === 'success' ? (
-            <div className="text-center py-20 success-message" role="alert">
-              <div className="text-6xl mb-6">🚀</div>
-              <h2 className="text-4xl font-bold mb-4">Message Sent!</h2>
-              <p className="text-[#FFF0F5]/60">We'll get back to you within 24 hours.</p>
-              <button 
-                onClick={() => setFormStatus('idle')}
-                className="mt-8 px-8 py-3 rounded-xl glass border-[#007FFF]/30 text-sm font-bold"
-              >
-                Send Another
-              </button>
-            </div>
-          ) : (
-            <>
-              <h2 id="contact-heading" className="text-4xl font-bold mb-8 text-center">Let's Build Something</h2>
-              <form className="space-y-6" onSubmit={handleSubmit} aria-label="Contact Form">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium text-white/50 ml-2">Name</label>
-                    <input required id="name" name="name" type="text" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#007FFF]/50 transition-colors" placeholder="John Doe" />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium text-white/50 ml-2">Email</label>
-                    <input required id="email" name="email" type="email" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#007FFF]/50 transition-colors" placeholder="john@example.com" />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-medium text-white/50 ml-2">Message</label>
-                  <textarea required id="message" name="message" rows={4} className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#007FFF]/50 transition-colors" placeholder="Tell us about your project..." />
-                </div>
-                <button 
-                  disabled={formStatus === 'submitting'}
-                  className="w-full py-5 rounded-2xl bg-white text-black font-black text-lg hover:bg-[#FFF0F5] transition-all disabled:opacity-50 relative overflow-hidden group"
-                >
-                  <span className={formStatus === 'submitting' ? 'opacity-0' : 'opacity-100'}>
-                    {formStatus === 'submitting' ? 'Sending...' : 'Send Message'}
-                  </span>
-                  {formStatus === 'submitting' && (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-6 h-6 border-4 border-black/20 border-t-black rounded-full animate-spin" />
-                    </div>
-                  )}
-                </button>
-              </form>
-            </>
-          )}
-        </div>
-      </section>
 
       {/* Footer */}
       <footer className="py-12 px-6 border-t border-white/5">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="text-2xl font-black tracking-tighter chromatic-text">VELOCE</div>
           <div className="flex gap-8 text-sm text-white/40">
-            <a href="#" className="hover:text-white">Twitter</a>
+            <a href="https://www.instagram.com/the.veloce/" className="hover:text-white">Instagram</a>
             <a href="#" className="hover:text-white">LinkedIn</a>
-            <a href="#" className="hover:text-white">Dribbble</a>
+            <a href="https://wa.me/6369601308" className="hover:text-white">WhatsApp</a>
           </div>
           <div className="text-sm text-white/20">
             © 2026 VELOCE Studio. All rights reserved.
           </div>
         </div>
       </footer>
-    </div>
+      </div>
+    </>
   );
 }
