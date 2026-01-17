@@ -166,42 +166,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Futuristic Background Overlay Layer */}
-      <div className="fixed inset-0 -z-10 mesh-gradient">
-        <div className="absolute inset-0 futuristic-grid opacity-30" />
-        
-        {/* Neural Network Nodes */}
-        <div className="neural-node top-[15%] left-[25%]" style={{ animationDelay: '0s' }} />
-        <div className="neural-node top-[45%] left-[15%]" style={{ animationDelay: '1s' }} />
-        <div className="neural-node top-[75%] left-[35%]" style={{ animationDelay: '2s' }} />
-        <div className="neural-node top-[25%] right-[25%]" style={{ animationDelay: '1.5s' }} />
-        <div className="neural-node top-[65%] right-[15%]" style={{ animationDelay: '0.5s' }} />
-
-        {/* Horizontal Data Streams */}
-        <div className="data-line top-[20%] left-0" style={{ animationDelay: '0s' }} />
-        <div className="data-line top-[50%] left-0" style={{ animationDelay: '3s' }} />
-        <div className="data-line top-[80%] left-0" style={{ animationDelay: '6s' }} />
-        <div className="data-line top-[35%] right-0" style={{ animationDelay: '1.5s', animationDirection: 'reverse' }} />
-        <div className="data-line top-[65%] right-0" style={{ animationDelay: '4.5s', animationDirection: 'reverse' }} />
-
-        {/* Orbital Rings around Floating Shapes */}
-        <div className="absolute top-[10%] left-[5%] w-96 h-96 flex items-center justify-center">
-          <div className="orbital-ring w-[120%] h-[120%] animate-[spin_20s_linear_infinite]" />
-          <div className="orbital-ring w-[140%] h-[140%] animate-[spin_30s_linear_infinite_reverse] opacity-50" />
-        </div>
-        
-        {/* Floating Abstract Shapes */}
-        <div className="floating-shape w-96 h-96 top-[10%] left-[5%] opacity-20" style={{ animationDelay: '0s' }} />
-        <div className="floating-shape w-[500px] h-[500px] bottom-[10%] right-[5%] opacity-10" style={{ animationDelay: '-5s', borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%' }} />
-        <div className="floating-shape w-64 h-64 top-[40%] right-[15%] opacity-15" style={{ animationDelay: '-10s', borderRadius: '50%' }} />
-
-        {/* Animated Light Streaks */}
-        <div className="glow-line left-[20%] delay-0 opacity-20" />
-        <div className="glow-line left-[50%] delay-[4s] opacity-20" />
-        <div className="glow-line left-[80%] delay-[2s] opacity-20" />
-        
-        {/* Removed Floating Blobs with blur-[150px] */}
-      </div>
 
       {/* Navbar */}
       <nav className="fixed top-0 w-full z-50 px-6 py-4" role="navigation" aria-label="Main Navigation">
