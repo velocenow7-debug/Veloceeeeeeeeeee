@@ -326,9 +326,10 @@ export default function Home() {
             <h2 className="text-4xl md:text-6xl font-bold mb-8">Why VELOCE?</h2>
             <div className="space-y-8">
               {[
-                { year: "2021", title: "Founded", desc: "Started with a vision for better web." },
-                { year: "2023", title: "100+ Projects", desc: "Delivered excellence across industries." },
-                { year: "2025", title: "Global Reach", desc: "Partnering with brands worldwide." },
+                { year: "", title: "Founded", desc: "Started with a vision for better web." },
+                { year: "", title: "Clean Design", desc: "Our designs are visually striking and engineered for usability across all devices." },
+                { year: "", title: "Affordable Without Compromise", desc: "Premium quality work at competitive pricing, no hidden costs." },
+                 { year: "", title: "Long-Term Support", desc: "We don’t disappear after launch. We grow with your business." },
               ].map((item, i) => (
                 <div key={i} className="flex gap-6">
                   <div className="text-cyan-400 font-mono font-bold pt-1">{item.year}</div>
