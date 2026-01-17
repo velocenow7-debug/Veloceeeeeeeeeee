@@ -202,9 +202,7 @@ export default function Home() {
             <div className="inline-block px-4 py-1.5 mb-8 rounded-full glass-dark border border-[#007FFF]/30 text-xs font-bold tracking-[0.2em] uppercase text-[#007FFF] animate-pulse">
               Next-Gen Web Agency
             </div>
-            <h1 id="hero-heading" className="text-6xl md:text-9xl font-black mb-8 tracking-tighter leading-[0.9] bg-clip-text text-transparent bg-gradient-to-b from-white via-[#007FFF] to-[#FFF0F5]/40">
-              VELOCE
-            </h1>
+            
             <p className="text-xl md:text-3xl text-white/70 mb-12 max-w-3xl mx-auto font-light leading-relaxed">
               We engineer <span className="text-[#007FFF] font-semibold italic">high-velocity</span> digital experiences that redefine the boundaries of the modern web.
             </p>
