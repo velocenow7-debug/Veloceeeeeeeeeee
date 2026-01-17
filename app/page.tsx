@@ -52,7 +52,7 @@ export default function Home() {
       <div className="relative min-h-screen font-sans selection:bg-[#007FFF]/30 overflow-x-hidden page-fade-in">
       {/* Custom Background Video Layer */}
       <video
-        className="fixed inset-0 object-cover -z-20 transition-all duration-500"
+        className="fixed inset-0 object-fill -z-20 transition-all duration-500"
         autoPlay
         muted
         loop
