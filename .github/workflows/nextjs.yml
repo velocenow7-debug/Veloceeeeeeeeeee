@@ -41,9 +41,7 @@ jobs:
           else
             echo "Unable to determine package manager"
             exit 1
-          fi
-
-                     - name: Setup pnpm
+          fi                     - name: Setup pnpm
               uses: pnpm/action-setup@v3
               with:
                 version: 8
